@@ -20,6 +20,14 @@ fn is_unhappy(n:u32) -> bool {
     return unhappy_markers.contains(&n)
 }
 
+fn is_first_it(n: u32) -> bool {
+    let n_string: String = n.to_string();
+    let char_vec: Vec<char> = n_string.chars().collect();
+    let digit_vec: Vec<u32> = char_vec.iter().map(|s| s.to_digit(10).unwrap()).collect();
+
+    return true;
+}
+
 pub fn is_happy(n: u32) -> bool {
     let mut ss = square_sum(n);
 
