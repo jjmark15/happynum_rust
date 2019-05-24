@@ -5,7 +5,9 @@ fn square_sum(n: u32) -> u32 {
 
     for c in n_string.chars() {
         match c.to_digit(10) {
-            Some(i) => ss += i,
+            Some(i) => {
+                ss += i.pow(2);
+            },
             _ => (),
         }
     }
@@ -19,11 +21,17 @@ fn is_unhappy(n:u32) -> bool {
 }
 
 fn is_happy(n: u32) -> bool {
-    if !is_unhappy(n) {
-        return true
-    } else {
-        return false
-    }
+    let mut ss = square_sum(n);
+
+	loop {
+		if ss == 1 {
+			return true;
+		} else if is_unhappy(ss) {
+			return false;
+		} else {
+			ss = square_sum(ss);
+		}
+	}
 }
 
 fn main() {
