@@ -35,9 +35,14 @@ fn is_happy(n: u32) -> bool {
 }
 
 fn main() {
-    let range = 10;
+    let range = 100;
+    let mut count = 0;
 
     for i in 1..range {
-        println!("{}", is_happy(i))
+        if is_happy(i) {
+            count += 1;
+        }
     }
+
+    println!("{}", count);
 }
