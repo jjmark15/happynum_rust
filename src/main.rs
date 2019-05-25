@@ -5,6 +5,7 @@ fn is_first_it(n: u32) -> bool {
     let digit_vec: Vec<u32> = n_string.chars()
         .map(|s| s.to_digit(10).unwrap()).collect();
 
+    // return digit_vec.is_sorted();
     return true;
 }
 
