@@ -13,7 +13,7 @@ fn main() {
     let range = 100;
     let mut count = 0;
 
-    for i in 1..range {
+    for i in 1..(range + 1) {
         if is_first_it(i) && happynum::is_happy(i) {
             count += 1;
         }
