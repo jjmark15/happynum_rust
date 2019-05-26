@@ -6,7 +6,7 @@ For information on happy numbers please see [the wikipedia page](https://en.wiki
 
 ## Usage
 
-To build the library run `cargo build`.
-To test running the binary run `cargo run`.
-To test running the optimised binary run `cargo run --release`.
-To just install run `cargo install --path ./`.
+- To build the library run `cargo build`.
+- To test running the binary run `cargo run`.
+- To test running the optimised binary run `cargo run --release`.
+- To just install run `cargo install --path ./`.
