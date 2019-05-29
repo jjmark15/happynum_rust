@@ -1,4 +1,3 @@
-extern crate clap;
 use clap::{Arg, App};
 
 use std::time::{Duration, Instant};
@@ -24,7 +23,6 @@ fn is_first_it(n: u32) -> bool {
 }
 
 fn run_happy_check(upper_bound: u32) {
-    extern crate happynum;
 
     let mut count = 0;
 
@@ -43,7 +41,7 @@ fn run_happy_check(upper_bound: u32) {
 
 pub fn instantiate_cli() {
     let matches = App::new("Distinct Happy Number Range Counter")
-                          .version("1.2.0")
+                          .version("1.2.0") // TODO: link to git tag version
                           .author("Josh Jones <ohblonddev@gmail.com>")
                           .about("Does awesome things")
                           .arg(Arg::with_name("range")
@@ -54,8 +52,7 @@ pub fn instantiate_cli() {
                                .takes_value(true))
                           .get_matches();
 
-    if let Some(range_end_str) = matches.value_of("range") {
-        let range_end: u32 = range_end_str.parse::<u32>().unwrap_or(0);
-        run_happy_check(range_end);
-    }
+    let range_end = value_t!(matches, "range", u32).unwrap_or(1000000);
+    // let range_end: u32 = range_end_str.parse::<u32>().unwrap_or(0);
+    run_happy_check(range_end);
 }

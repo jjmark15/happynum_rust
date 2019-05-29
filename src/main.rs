@@ -1,3 +1,7 @@
+#[macro_use]
+extern crate clap;
+extern crate happynum;
+
 mod cli;
 
 fn main() {
