@@ -1,12 +1,7 @@
 
 fn square_sum(n: u32) -> u32 {
     let digit_vec: Vec<u32> = n.to_string().chars().map(|c| {
-        match c.to_digit(10) {
-            Some(i) => {
-                i.pow(2)
-            },
-            _ => 0,
-        }
+        c.to_digit(10).unwrap().pow(2)
     }).collect();
 
     return digit_vec.iter().sum();
