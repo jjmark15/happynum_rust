@@ -8,8 +8,8 @@ fn square_sum(n: u32) -> u32 {
 }
 
 fn is_unhappy(n:u32) -> bool {
-    let unhappy_markers: [u32; 8] = [89, 145, 42, 37, 58, 20, 4, 16];
-    return unhappy_markers.contains(&n)
+    const UNHAPPY_MARKERS: [u32; 8] = [89, 145, 42, 37, 58, 20, 4, 16];
+    return UNHAPPY_MARKERS.contains(&n)
 }
 
 pub fn is_happy(n: u32) -> bool {
