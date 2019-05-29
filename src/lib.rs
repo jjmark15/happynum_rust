@@ -1,18 +1,15 @@
 
 fn square_sum(n: u32) -> u32 {
-    let n_string: String = n.to_string();
-    let mut ss: u32 = 0;
-
-    for c in n_string.chars() {
+    let digit_vec: Vec<u32> = n.to_string().chars().map(|c| {
         match c.to_digit(10) {
             Some(i) => {
-                ss += i.pow(2);
+                i.pow(2)
             },
-            _ => (),
+            _ => 0,
         }
-    }
+    }).collect();
 
-    return ss;
+    return digit_vec.iter().sum();
 }
 
 fn is_unhappy(n:u32) -> bool {
