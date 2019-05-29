@@ -2,18 +2,24 @@ extern crate happynum;
 
 use std::time::{Duration, Instant};
 
+fn is_sorted(v: Vec<u32>) -> bool {
+    for (i, n) in v.iter().enumerate() {
+        match v.get(&i -1) {
+            Some(prev) => {
+                if prev > n {
+                    return false;
+                }
+            },
+            _ => (),
+        }
+    }
+    return true;
+}
+
 fn is_first_it(n: u32) -> bool {
-    let mut digit_vec: Vec<u32> = n.to_string().chars()
+    let digit_vec: Vec<u32> = n.to_string().chars()
         .map(|s| s.to_digit(10).unwrap()).collect();
-    digit_vec.sort();
-
-    let sorted_n: u32 = {
-        let sorted_n_string: String = digit_vec.iter()
-            .map(|d| d.to_string()).collect();
-        sorted_n_string.parse::<u32>().unwrap()
-    };
-
-    return sorted_n == n;
+    return is_sorted(digit_vec);
 }
 
 fn main() {
