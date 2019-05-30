@@ -1,10 +1,15 @@
 
 fn square_sum(n: u32) -> u32 {
-    let digit_vec: Vec<u32> = n.to_string().chars().map(|c| {
-        c.to_digit(10).unwrap().pow(2)
-    }).collect();
+	let mut ss: u32 = 0;
+	let mut val: u32 = n;
 
-    return digit_vec.iter().sum();
+	while val > 0 {
+		ss += (val % 10).pow(2);
+
+		// take advantage of losing decimal values in an ineger value
+		val /= 10;
+	}
+	return ss;
 }
 
 fn is_unhappy(n:u32) -> bool {
