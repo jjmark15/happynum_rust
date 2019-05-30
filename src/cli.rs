@@ -39,7 +39,7 @@ pub fn instantiate_cli() {
     let matches = App::new("Distinct Happy Number Range Counter")
                         .version(crate_version!())
                         .author("Josh Jones <ohblonddev@gmail.com>")
-                        .about("Does awesome things")
+                        .about("Gets the count of distinct happy numbers in a range")
                         .arg(Arg::with_name("range")
                             .short("r")
                             .long("range")
