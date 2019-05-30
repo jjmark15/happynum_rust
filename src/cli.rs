@@ -1,29 +1,24 @@
 use clap::{Arg, App};
 
-fn is_sorted(v: Vec<u32>) -> bool {
-    for (i, curr) in v.iter().enumerate() {
+fn is_first_it(n: u32) -> bool {
+    let mut prev: char = 0 as char;
+    for (i, curr) in n.to_string().chars().enumerate() {
         if i > 0 {
-            if v.get(&i -1).unwrap() > curr {
+            if prev > curr {
                 return false;
             }
         }
+        prev = curr;
     }
     return true;
-}
-
-fn is_first_it(n: u32) -> bool {
-    let digit_vec: Vec<u32> = n.to_string().chars()
-        .map(|s| s.to_digit(10).unwrap()).collect();
-    return is_sorted(digit_vec);
 }
 
 fn run_happy_check(upper_bound: u32) {
     use std::time::{Duration, Instant};
 
-    let mut count = 0;
-
     let start = Instant::now();
 
+    let mut count = 0;
     for i in 1..(upper_bound + 1) {
         if is_first_it(i) && happynum::is_happy(i) {
             count += 1;
@@ -31,7 +26,6 @@ fn run_happy_check(upper_bound: u32) {
     }
 
     let duration: Duration = start.elapsed();
-
     println!("{} distinct happy numbers found in {:?}", count, duration);
 }
 
