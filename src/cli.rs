@@ -1,14 +1,11 @@
 use clap::{Arg, App};
 
 fn is_sorted(v: Vec<u32>) -> bool {
-    for (i, n) in v.iter().enumerate() {
-        match v.get(&i -1) {
-            Some(prev) => {
-                if prev > n {
-                    return false;
-                }
-            },
-            _ => (),
+    for (i, curr) in v.iter().enumerate() {
+        if i > 0 {
+            if v.get(&i -1).unwrap() > curr {
+                return false;
+            }
         }
     }
     return true;
@@ -52,6 +49,5 @@ pub fn instantiate_cli() {
                           .get_matches();
 
     let range_end: u32 = value_t!(matches, "range", u32).unwrap_or(1000000);
-    // let range_end: u32 = range_end_str.parse::<u32>().unwrap_or(0);
     run_happy_check(range_end);
 }
