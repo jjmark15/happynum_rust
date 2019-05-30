@@ -1,7 +1,5 @@
 use clap::{Arg, App};
 
-use std::time::{Duration, Instant};
-
 fn is_sorted(v: Vec<u32>) -> bool {
     for (i, n) in v.iter().enumerate() {
         match v.get(&i -1) {
@@ -23,6 +21,7 @@ fn is_first_it(n: u32) -> bool {
 }
 
 fn run_happy_check(upper_bound: u32) {
+    use std::time::{Duration, Instant};
 
     let mut count = 0;
 
@@ -52,7 +51,7 @@ pub fn instantiate_cli() {
                                .takes_value(true))
                           .get_matches();
 
-    let range_end = value_t!(matches, "range", u32).unwrap_or(1000000);
+    let range_end: u32 = value_t!(matches, "range", u32).unwrap_or(1000000);
     // let range_end: u32 = range_end_str.parse::<u32>().unwrap_or(0);
     run_happy_check(range_end);
 }
