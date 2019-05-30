@@ -3,14 +3,11 @@ extern crate happynum;
 use std::time::{Duration, Instant};
 
 fn is_sorted(v: Vec<u32>) -> bool {
-    for (i, n) in v.iter().enumerate() {
-        match v.get(&i -1) {
-            Some(prev) => {
-                if prev > n {
-                    return false;
-                }
-            },
-            _ => (),
+    for (i, curr) in v.iter().enumerate() {
+        if i > 0 {
+            if v.get(&i -1).unwrap() > curr {
+                return false;
+            }
         }
     }
     return true;
