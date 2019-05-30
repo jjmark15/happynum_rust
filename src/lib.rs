@@ -5,6 +5,8 @@ fn square_sum(n: u32) -> u32 {
 
 	while val > 0 {
 		ss += (val % 10).pow(2);
+
+		// take advantage of losing decimal values in an ineger value
 		val /= 10;
 	}
 	return ss;
