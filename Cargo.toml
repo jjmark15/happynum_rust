@@ -6,10 +6,10 @@ edition = "2018"
 license = "MIT"
 description = "A package for determining happy numbers"
 readme = "README.md"
-homepage = "github.com/jjmark15/happynum_rust"
-repository = "github.com/jjmark15/happynum_rust"
-keywords = ["happy numbers"]
-categories = ["math"]
+repository = "https://github.com/jjmark15/happynum_rust"
+keywords = ["happy","number"]
+categories = ["Science"]
+exclude = [".gitignore"]
 
 [dependencies]
 clap = "~2.33"
