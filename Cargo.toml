@@ -1,15 +1,15 @@
 [package]
 name = "happynum"
-version = "1.4.1"
+version = "1.4.2"
 authors = ["Josh Jones <ohblonddev@gmail.com>"]
 edition = "2018"
 license = "MIT"
 description = "A package for determining happy numbers"
 readme = "README.md"
-homepage = "github.com/jjmark15/happynum_rust"
-repository = "github.com/jjmark15/happynum_rust"
-keywords = ["happy numbers"]
-categories = ["math"]
+repository = "https://github.com/jjmark15/happynum_rust"
+keywords = ["happy","number"]
+categories = ["science"]
+exclude = [".gitignore"]
 
 [dependencies]
 clap = "~2.33"
