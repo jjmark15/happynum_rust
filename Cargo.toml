@@ -8,7 +8,7 @@ description = "A package for determining happy numbers"
 readme = "README.md"
 repository = "https://github.com/jjmark15/happynum_rust"
 keywords = ["happy","number"]
-categories = ["Science"]
+categories = ["science"]
 exclude = [".gitignore"]
 
 [dependencies]
