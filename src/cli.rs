@@ -1,29 +1,12 @@
 use clap::{Arg, App};
-
-fn is_first_it(n: u32) -> bool {
-    let mut prev: char = 0 as char;
-    for (i, curr) in n.to_string().chars().enumerate() {
-        if i > 0 {
-            if prev > curr {
-                return false;
-            }
-        }
-        prev = curr;
-    }
-    return true;
-}
+use happynum::{distinct_is_happy_range};
 
 fn run_happy_check(upper_bound: u32) {
     use std::time::{Duration, Instant};
 
     let start = Instant::now();
 
-    let mut count = 0;
-    for i in 1..(upper_bound + 1) {
-        if is_first_it(i) && happynum::is_happy(i) {
-            count += 1;
-        }
-    }
+    let count = distinct_is_happy_range(upper_bound);
 
     let duration: Duration = start.elapsed();
     println!("{} distinct happy numbers found in {:?}", count, duration);
