@@ -3,6 +3,13 @@ name = "happynum"
 version = "1.4.1"
 authors = ["Josh Jones <ohblonddev@gmail.com>"]
 edition = "2018"
+license = "MIT"
+description = "A package for determining happy numbers"
+readme = "README.md"
+homepage = "github.com/jjmark15/happynum_rust"
+repository = "github.com/jjmark15/happynum_rust"
+keywords = ["happy numbers"]
+categories = ["math"]
 
 [dependencies]
 clap = "~2.33"
