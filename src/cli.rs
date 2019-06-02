@@ -25,6 +25,8 @@ pub fn instantiate_cli() {
                             .takes_value(true))
                         .get_matches();
 
-    let range_end: u32 = value_t!(matches, "range", u32).unwrap();
-    run_happy_check(range_end);
+    if let Some(_) = matches.value_of("range") {
+        let range_end: u32 = value_t!(matches, "range", u32).unwrap();
+        run_happy_check(range_end);
+    }
 }
