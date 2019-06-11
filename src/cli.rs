@@ -32,11 +32,13 @@ pub fn instantiate_cli() {
 
     if let Some(_) = matches.value_of("range") {
         let range_end: f32 = value_t!(matches, "range", f32).unwrap();
-        if f32_can_be_u32(range_end) {
-            run_happy_check(range_end as u32);
-        } else {
-            eprintln!("Error: range limit cannot be a fraction value");
-            exit(1);
+
+        match f32_can_be_u32(range_end) {
+            true => run_happy_check(range_end as u32),
+            false => {
+                eprintln!("Error: range limit cannot be a fraction value");
+                exit(1);
+            }
         }
     }
 }
