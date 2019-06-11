@@ -26,7 +26,7 @@ pub fn instantiate_cli() {
                         .get_matches();
 
     if let Some(_) = matches.value_of("range") {
-        let range_end: u32 = value_t!(matches, "range", u32).unwrap();
+        let range_end: u32 = value_t!(matches, "range", f32).unwrap() as u32;
         run_happy_check(range_end);
     }
 }
