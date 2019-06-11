@@ -42,7 +42,13 @@ pub fn is_happy(n: u32) -> bool {
 	}
 }
 
-/// Returns the count of all distinct happy numbers in the range `1 -> n + 1`
+/// Counts distinct happy numbers in a range.
+///
+/// # Example
+///
+/// ```
+/// assert_eq!(711, happynum::distinct_is_happy_range(1000000));
+/// ```
 pub fn distinct_is_happy_range(n: u32) -> u32 {
 	let mut count = 0;
     for i in 1..(n + 1) {
