@@ -20,7 +20,14 @@ fn is_unhappy(n:u32) -> bool {
     return UNHAPPY_MARKERS.contains(&n)
 }
 
-/// Returns `true` if `n` is a happy number
+/// Checks if a number is a happy number.
+///
+/// # Example
+///
+/// ```
+/// assert_eq!(true, happynum::is_happy(10));
+/// assert_eq!(false, happynum::is_happy(89));
+/// ```
 pub fn is_happy(n: u32) -> bool {
     let mut ss = square_sum(n);
 
