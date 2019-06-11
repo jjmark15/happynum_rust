@@ -20,7 +20,14 @@ fn is_unhappy(n:u32) -> bool {
     return UNHAPPY_MARKERS.contains(&n)
 }
 
-/// Returns `true` if `n` is a happy number
+/// Checks if a number is a happy number.
+///
+/// # Example
+///
+/// ```
+/// assert_eq!(true, happynum::is_happy(10));
+/// assert_eq!(false, happynum::is_happy(89));
+/// ```
 pub fn is_happy(n: u32) -> bool {
     let mut ss = square_sum(n);
 
@@ -35,7 +42,13 @@ pub fn is_happy(n: u32) -> bool {
 	}
 }
 
-/// Returns the count of all distinct happy numbers in the range `1 -> n + 1`
+/// Counts distinct happy numbers in a range.
+///
+/// # Example
+///
+/// ```
+/// assert_eq!(711, happynum::distinct_is_happy_range(1000000));
+/// ```
 pub fn distinct_is_happy_range(n: u32) -> u32 {
 	let mut count = 0;
     for i in 1..(n + 1) {
