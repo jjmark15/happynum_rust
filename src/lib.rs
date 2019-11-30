@@ -8,7 +8,7 @@ fn square_sum(n: u32) -> u32 {
     while val > 0 {
         ss += (val % 10).pow(2);
 
-        // take advantage of losing decimal values in an ineger value
+        // take advantage of losing decimal values in an integer value
         val /= 10;
     }
     return ss;
@@ -71,4 +71,31 @@ fn is_first_it(n: u32) -> bool {
         prev = curr;
     }
     return true;
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_is_first_it() {
+        assert_eq!(true, is_first_it(1234));
+        assert_eq!(true, is_first_it(0000));
+        assert_eq!(true, is_first_it(0123));
+        assert_eq!(false, is_first_it(1230));
+        assert_eq!(false, is_first_it(1324));
+    }
+
+    #[test]
+    fn test_is_unhappy() {
+        assert_eq!(true, is_unhappy(89));
+    }
+
+    #[test]
+    fn test_square_sum() {
+        assert_eq!(1, square_sum(1));
+        assert_eq!(4, square_sum(2));
+        assert_eq!(20, square_sum(204));
+        assert_eq!(0, square_sum(0));
+    }
 }
