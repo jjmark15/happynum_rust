@@ -24,12 +24,14 @@ pub fn instantiate_cli() {
         .version(crate_version!())
         .author("Josh Jones <ohblonddev@gmail.com>")
         .about("Gets the count of distinct happy numbers in a range")
-        .arg(Arg::with_name("range")
-            .short("r")
-            .long("range")
-            .value_name("RANGE")
-            .help("Choose a range from 0 to number")
-            .takes_value(true))
+        .arg(
+            Arg::with_name("range")
+                .short("r")
+                .long("range")
+                .value_name("RANGE")
+                .help("Choose a range from 0 to number")
+                .takes_value(true),
+        )
         .get_matches();
 
     if let Some(_) = matches.value_of("range") {
