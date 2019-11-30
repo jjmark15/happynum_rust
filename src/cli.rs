@@ -8,9 +8,7 @@ fn run_happy_check(upper_bound: u32) {
     use std::time::{Duration, Instant};
 
     let start = Instant::now();
-
     let count = distinct_is_happy_range(upper_bound);
-
     let duration: Duration = start.elapsed();
     println!("{} distinct happy numbers found in {:?}", count, duration);
 }
