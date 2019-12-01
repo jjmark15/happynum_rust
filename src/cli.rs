@@ -44,3 +44,14 @@ pub fn instantiate_cli() {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_f32_can_be_u32() {
+        assert!(f32_can_be_u32(1f32));
+        assert!(!f32_can_be_u32(1.5f32))
+    }
+}
