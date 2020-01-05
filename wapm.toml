@@ -1,0 +1,10 @@
+[package]
+name = "happynum_rust"
+version = "1.5.0"
+description = "A package for determining happy numbers"
+license = "MIT"
+repository = "https://github.com/jjmark15/happynum_rust"
+
+[[module]]
+name = "happynum"
+source = "target/wasm32-wasi/release/happynum.wasm"

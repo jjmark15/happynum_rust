@@ -164,3 +164,5 @@ Cargo.lock
 .history
 
 # End of https://www.gitignore.io/api/rust,intellij,intellij+iml,visualstudiocode
+
+wapm_packages
