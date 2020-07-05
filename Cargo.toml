@@ -13,3 +13,4 @@ exclude = [".gitignore"]
 
 [dependencies]
 clap = "~2.33"
+rayon = "1.3"

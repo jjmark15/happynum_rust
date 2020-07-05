@@ -1,3 +1,5 @@
+use rayon::prelude::*;
+
 /// Returns the sum of the square of all digits in `n`
 fn square_sum(n: u32) -> u32 {
     let mut ss: u32 = 0;
@@ -48,13 +50,9 @@ pub fn is_happy(n: u32) -> bool {
 /// assert_eq!(711, happynum::distinct_is_happy_range(1000000));
 /// ```
 pub fn distinct_is_happy_range(n: u32) -> u32 {
-    let mut count = 0;
-    for i in 1..(n + 1) {
-        if is_first_it(i) && is_happy(i) {
-            count += 1;
-        }
-    }
-    count
+    (1..(n+1)).into_par_iter().filter(|&a| {
+        is_first_it(a) && is_happy(a)
+    }).count() as u32
 }
 
 /// Returns `true` if all digits in `n` are sorted
