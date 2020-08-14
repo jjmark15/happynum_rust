@@ -1,9 +1,9 @@
 use rayon::prelude::*;
 
 /// Returns the sum of the square of all digits in `n`
-fn square_sum(n: u32) -> u32 {
-    let mut ss: u32 = 0;
-    let mut val: u32 = n;
+fn square_sum(n: u64) -> u64 {
+    let mut ss = 0;
+    let mut val = n;
 
     while val > 0 {
         ss += (val % 10).pow(2);
@@ -15,8 +15,8 @@ fn square_sum(n: u32) -> u32 {
 }
 
 /// Returns `false` if number is contained in list of unhappy numbers
-fn is_unhappy(n: u32) -> bool {
-    const UNHAPPY_MARKERS: [u32; 8] = [89, 145, 42, 37, 58, 20, 4, 16];
+fn is_unhappy(n: u64) -> bool {
+    const UNHAPPY_MARKERS: [u64; 8] = [89, 145, 42, 37, 58, 20, 4, 16];
     UNHAPPY_MARKERS.contains(&n)
 }
 
@@ -28,7 +28,7 @@ fn is_unhappy(n: u32) -> bool {
 /// assert_eq!(true, happynum::is_happy(10));
 /// assert_eq!(false, happynum::is_happy(89));
 /// ```
-pub fn is_happy(n: u32) -> bool {
+pub fn is_happy(n: u64) -> bool {
     let mut ss = square_sum(n);
 
     loop {
@@ -49,14 +49,14 @@ pub fn is_happy(n: u32) -> bool {
 /// ```
 /// assert_eq!(711, happynum::distinct_is_happy_range(1000000));
 /// ```
-pub fn distinct_is_happy_range(n: u32) -> u32 {
+pub fn distinct_is_happy_range(n: u64) -> u64 {
     (1..(n+1)).into_par_iter().filter(|&a| {
         is_first_it(a) && is_happy(a)
-    }).count() as u32
+    }).count() as u64
 }
 
 /// Returns `true` if all digits in `n` are sorted
-fn is_first_it(n: u32) -> bool {
+fn is_first_it(n: u64) -> bool {
     let mut prev: char = 0 as char;
     for (i, curr) in n.to_string().chars().enumerate() {
         if i > 0 && prev > curr {

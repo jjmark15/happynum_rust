@@ -4,7 +4,7 @@ use clap::{App, Arg};
 
 use happynum::distinct_is_happy_range;
 
-fn run_happy_check(upper_bound: u32) {
+fn run_happy_check(upper_bound: u64) {
     use std::time::{Duration, Instant};
 
     let start = Instant::now();
@@ -13,7 +13,7 @@ fn run_happy_check(upper_bound: u32) {
     println!("{} distinct happy numbers found in {:?}", count, duration);
 }
 
-fn f32_can_be_u32(n: f32) -> bool {
+fn f32_can_be_u32(n: f64) -> bool {
     n.fract() == 0.0
 }
 
@@ -33,10 +33,10 @@ pub fn instantiate_cli() {
         .get_matches();
 
     if matches.value_of("range").is_some() {
-        let range_end: f32 = value_t!(matches, "range", f32).unwrap();
+        let range_end: f64 = value_t!(matches, "range", f64).unwrap();
 
         if f32_can_be_u32(range_end) {
-            run_happy_check(range_end as u32)
+            run_happy_check(range_end as u64)
         } else {
             eprintln!("Error: range limit cannot be a fraction value");
             exit(1);
@@ -50,7 +50,7 @@ mod tests {
 
     #[test]
     fn test_f32_can_be_u32() {
-        assert!(f32_can_be_u32(1f32));
-        assert!(!f32_can_be_u32(1.5f32))
+        assert!(f32_can_be_u32(1f64));
+        assert!(!f32_can_be_u32(1.5f64))
     }
 }
