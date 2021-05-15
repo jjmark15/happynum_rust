@@ -1,4 +1,4 @@
-use crate::domain::calculate_distinct_happy_numbers_in_range;
+use crate::domain::count_distinct_happy_numbers_in_range;
 
 pub(crate) struct ApplicationService;
 
@@ -7,7 +7,7 @@ impl ApplicationService {
         ApplicationService
     }
 
-    pub(crate) fn calculate_distinct_happy_numbers_in_range(&self, n: u64) -> u64 {
-        calculate_distinct_happy_numbers_in_range(n)
+    pub(crate) fn count_distinct_happy_numbers_in_range(&self, n: u64) -> u64 {
+        count_distinct_happy_numbers_in_range(n)
     }
 }

@@ -17,7 +17,7 @@ pub(crate) fn run_cli(application_service: &ApplicationService) {
     let opts = CliOptions::from_args();
 
     let (count, duration) = time_operation(|| {
-        application_service.calculate_distinct_happy_numbers_in_range(opts.range as u64)
+        application_service.count_distinct_happy_numbers_in_range(opts.range as u64)
     });
 
     println!("count:\t{}\ntime:\t{:?}", count, duration);

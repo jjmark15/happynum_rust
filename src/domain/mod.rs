@@ -14,20 +14,11 @@ fn square_sum(n: u64) -> u64 {
     ss
 }
 
-/// Returns `false` if number is contained in list of unhappy numbers
 fn is_unhappy(n: u64) -> bool {
     const UNHAPPY_MARKERS: [u64; 8] = [89, 145, 42, 37, 58, 20, 4, 16];
     UNHAPPY_MARKERS.contains(&n)
 }
 
-/// Checks if a number is a happy number.
-///
-/// # Example
-///
-/// ```
-/// assert_eq!(true, happynum::is_happy(10));
-/// assert_eq!(false, happynum::is_happy(89));
-/// ```
 pub fn is_happy(n: u64) -> bool {
     let mut ss = square_sum(n);
 
@@ -42,14 +33,8 @@ pub fn is_happy(n: u64) -> bool {
     }
 }
 
-/// Counts distinct happy numbers in a range.
-///
-/// # Example
-///
-/// ```
-/// assert_eq!(711, happynum::distinct_is_happy_range(1000000));
-/// ```
-pub(crate) fn calculate_distinct_happy_numbers_in_range(n: u64) -> u64 {
+/// Counts distinct happy numbers in a range
+pub fn count_distinct_happy_numbers_in_range(n: u64) -> u64 {
     (1..(n + 1))
         .into_par_iter()
         .filter(|&a| is_first_it(a) && is_happy(a))
@@ -73,24 +58,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_is_first_it() {
-        assert_eq!(true, is_first_it(1234));
-        assert_eq!(true, is_first_it(0000));
-        assert_eq!(true, is_first_it(123));
-        assert_eq!(false, is_first_it(1230));
-        assert_eq!(false, is_first_it(1324));
-    }
-
-    #[test]
-    fn test_is_unhappy() {
-        assert_eq!(true, is_unhappy(89));
-    }
-
-    #[test]
-    fn test_square_sum() {
-        assert_eq!(1, square_sum(1));
-        assert_eq!(4, square_sum(2));
-        assert_eq!(20, square_sum(204));
-        assert_eq!(0, square_sum(0));
+    fn counts_distinct_happy_numbers_in_range() {
+        assert_eq!(count_distinct_happy_numbers_in_range(1000000), 711)
     }
 }
