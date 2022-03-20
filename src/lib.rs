@@ -1,5 +1,5 @@
 use crate::application::ApplicationService;
-use crate::ports::cli::structopt::run_cli;
+use crate::ports::cli::clap::run_cli;
 
 mod application;
 pub(crate) mod domain;
