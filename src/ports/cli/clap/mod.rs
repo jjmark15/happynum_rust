@@ -2,22 +2,32 @@ use std::time::{Duration, Instant};
 
 use clap::Parser;
 
-use crate::application::ApplicationService;
+use crate::domain::{
+    count_distinct_happy_numbers_in_range, count_distinct_happy_numbers_in_range_parallel,
+};
 
 /// Finds distinct happy numbers within a range
 #[derive(Parser, Debug)]
 #[structopt(name = "Distinct happy number finder")]
 pub(crate) struct CliOptions {
     /// Number range to search through
-    #[structopt(short, long, default_value = "1")]
+    #[clap(short, long, default_value = "1")]
     range: f64,
+
+    /// Run in parallel
+    #[clap(short, long)]
+    single_threaded: bool,
 }
 
-pub(crate) fn run_cli(application_service: &ApplicationService) {
+pub(crate) fn run_cli() {
     let opts = CliOptions::parse();
 
     let (count, duration) = time_operation(|| {
-        application_service.count_distinct_happy_numbers_in_range(opts.range as u64)
+        if opts.single_threaded {
+            count_distinct_happy_numbers_in_range(opts.range as u64)
+        } else {
+            count_distinct_happy_numbers_in_range_parallel(opts.range as u64)
+        }
     });
 
     println!("count:\t{}\ntime:\t{:?}", count, duration);

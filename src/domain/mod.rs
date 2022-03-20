@@ -1,5 +1,4 @@
 use itertools::Itertools;
-#[cfg(feature = "parallel")]
 use rayon::prelude::*;
 
 /// Returns the sum of the square of all digits in `n`
@@ -36,8 +35,7 @@ pub fn is_happy(n: u64) -> bool {
 }
 
 /// Counts distinct happy numbers in a range
-#[cfg(feature = "parallel")]
-pub fn count_distinct_happy_numbers_in_range(n: u64) -> u64 {
+pub fn count_distinct_happy_numbers_in_range_parallel(n: u64) -> u64 {
     (1..(n + 1))
         .into_par_iter()
         .filter(|&a| is_first_it(a) && is_happy(a))

@@ -7,15 +7,11 @@ license = "MIT"
 description = "A package for determining happy numbers"
 readme = "README.md"
 repository = "https://github.com/jjmark15/happynum_rust"
-keywords = ["happy","number"]
+keywords = ["happy", "number"]
 categories = ["science"]
 exclude = [".gitignore"]
 
 [dependencies]
 clap = { version = "3.1.6", features = ["derive"] }
 itertools = "0.10"
-rayon = { version = "1.3", optional = true }
-
-[features]
-parallel=["rayon"]
-default=["parallel"]
+rayon = { version = "1.3" }
