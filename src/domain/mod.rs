@@ -1,3 +1,4 @@
+use itertools::Itertools;
 #[cfg(feature = "parallel")]
 use rayon::prelude::*;
 
@@ -54,14 +55,11 @@ pub fn count_distinct_happy_numbers_in_range(n: u64) -> u64 {
 
 /// Returns `true` if all digits in `n` are sorted
 fn is_first_it(n: u64) -> bool {
-    let mut prev: char = 0 as char;
-    for (i, curr) in n.to_string().chars().enumerate() {
-        if i > 0 && prev > curr {
-            return false;
-        }
-        prev = curr;
-    }
-    true
+    n.to_string()
+        .chars()
+        .into_iter()
+        .tuple_windows()
+        .all(|(a, b)| a <= b)
 }
 
 #[cfg(test)]
