@@ -2,9 +2,7 @@ use std::time::{Duration, Instant};
 
 use clap::Parser;
 
-use crate::domain::{
-    count_distinct_happy_numbers_in_range, count_distinct_happy_numbers_in_range_parallel,
-};
+use crate::happynum::{count_distinct_happy_numbers_in_range, count_distinct_happy_numbers_in_range_parallel};
 
 /// Finds distinct happy numbers within a range
 #[derive(Parser, Debug)]
@@ -24,9 +22,9 @@ pub(crate) fn run_cli() {
 
     let (count, duration) = time_operation(|| {
         if opts.single_threaded {
-            count_distinct_happy_numbers_in_range(opts.range as u64)
+            count_distinct_happy_numbers_in_range(opts.range as usize)
         } else {
-            count_distinct_happy_numbers_in_range_parallel(opts.range as u64)
+            count_distinct_happy_numbers_in_range_parallel(opts.range as usize)
         }
     });
 

@@ -1,7 +1,8 @@
-use crate::ports::cli::clap::run_cli;
+use crate::cli::run_cli;
 
-pub(crate) mod domain;
-mod ports;
+mod cli;
+
+mod happynum;
 
 #[derive(Default)]
 pub struct App;

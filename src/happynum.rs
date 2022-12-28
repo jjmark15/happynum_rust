@@ -2,7 +2,7 @@ use itertools::Itertools;
 use rayon::prelude::*;
 
 /// Returns the sum of the square of all digits in `n`
-fn square_sum(n: u64) -> u64 {
+fn square_sum(n: usize) -> usize {
     let mut ss = 0;
     let mut val = n;
 
@@ -15,12 +15,12 @@ fn square_sum(n: u64) -> u64 {
     ss
 }
 
-fn is_unhappy(n: u64) -> bool {
-    const UNHAPPY_MARKERS: [u64; 8] = [89, 145, 42, 37, 58, 20, 4, 16];
+fn is_unhappy(n: usize) -> bool {
+    const UNHAPPY_MARKERS: [usize; 8] = [89, 145, 42, 37, 58, 20, 4, 16];
     UNHAPPY_MARKERS.contains(&n)
 }
 
-pub fn is_happy(n: u64) -> bool {
+pub fn is_happy(n: usize) -> bool {
     let mut ss = square_sum(n);
 
     loop {
@@ -35,24 +35,23 @@ pub fn is_happy(n: u64) -> bool {
 }
 
 /// Counts distinct happy numbers in a range
-pub fn count_distinct_happy_numbers_in_range_parallel(n: u64) -> u64 {
+pub fn count_distinct_happy_numbers_in_range_parallel(n: usize) -> usize {
     (1..(n + 1))
         .into_par_iter()
         .filter(|&a| is_first_it(a) && is_happy(a))
-        .count() as u64
+        .count()
 }
 
 /// Counts distinct happy numbers in a range
-#[cfg(not(feature = "parallel"))]
-pub fn count_distinct_happy_numbers_in_range(n: u64) -> u64 {
+pub fn count_distinct_happy_numbers_in_range(n: usize) -> usize {
     (1..(n + 1))
         .into_iter()
         .filter(|&a| is_first_it(a) && is_happy(a))
-        .count() as u64
+        .count()
 }
 
 /// Returns `true` if all digits in `n` are sorted
-fn is_first_it(n: u64) -> bool {
+fn is_first_it(n: usize) -> bool {
     n.to_string()
         .chars()
         .into_iter()
