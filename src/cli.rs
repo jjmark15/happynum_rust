@@ -4,16 +4,15 @@ use clap::Parser;
 
 use crate::happynum::{count_distinct_happy_numbers_in_range, count_distinct_happy_numbers_in_range_parallel};
 
-/// Finds distinct happy numbers within a range
 #[derive(Parser, Debug)]
-#[structopt(name = "Distinct happy number finder")]
+#[command(author, version, about, long_about = None)]
 pub(crate) struct CliOptions {
     /// Number range to search through
-    #[clap(short, long, default_value = "1")]
+    #[arg(short, long, default_value_t = 1_f64)]
     range: f64,
 
-    /// Run in parallel
-    #[clap(short, long)]
+    /// Run single-threaded
+    #[arg(short, long)]
     single_threaded: bool,
 }
 
@@ -28,7 +27,7 @@ pub(crate) fn run_cli() {
         }
     });
 
-    println!("count:\t{}\ntime:\t{:?}", count, duration);
+    println!("count:\t{count}\ntime:\t{duration:?}");
 }
 
 fn time_operation<T>(operation: impl Fn() -> T) -> (T, Duration) {

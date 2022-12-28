@@ -4,7 +4,7 @@ version = "1.7.0"
 authors = ["Josh Jones <ohblonddev@gmail.com>"]
 edition = "2021"
 license = "MIT"
-description = "A package for determining happy numbers"
+description = "Distinct happy number finder"
 readme = "README.md"
 repository = "https://github.com/jjmark15/happynum_rust"
 keywords = ["happy", "number"]
@@ -12,6 +12,6 @@ categories = ["science"]
 exclude = [".gitignore"]
 
 [dependencies]
-clap = { version = "3.1.6", features = ["derive"] }
+clap = { version = "4.0", features = ["derive"] }
 itertools = "0.10"
 rayon = { version = "1.3" }
