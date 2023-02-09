@@ -10,3 +10,11 @@ For information on happy numbers please see [the wikipedia page](https://en.wiki
 - To test running the binary run `cargo run`.
 - To test running the optimised binary run `cargo run --release`.
 - To just install run `cargo install --path ./`.
+
+## Releasing
+
+### install tools
+cargo install cargo-release
+
+### cut a release
+cargo release --no-publish --execute <version>
