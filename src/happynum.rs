@@ -1,4 +1,3 @@
-use itertools::Itertools;
 use rayon::prelude::*;
 
 /// Returns the sum of the square of all digits in `n`
@@ -45,18 +44,27 @@ pub fn count_distinct_happy_numbers_in_range_parallel(n: usize) -> usize {
 /// Counts distinct happy numbers in a range
 pub fn count_distinct_happy_numbers_in_range(n: usize) -> usize {
     (1..(n + 1))
-        .into_iter()
         .filter(|&a| is_first_it(a) && is_happy(a))
         .count()
 }
 
 /// Returns `true` if all digits in `n` are sorted
 fn is_first_it(n: usize) -> bool {
-    n.to_string()
-        .chars()
-        .into_iter()
-        .tuple_windows()
-        .all(|(a, b)| a <= b)
+    let mut rem = n;
+    let mut prev: usize = 9;
+
+    while rem > 0 {
+        let curr = rem % 10;
+
+        if curr > prev {
+            return false;
+        }
+
+        rem /= 10;
+        prev = curr;
+    }
+
+    true
 }
 
 #[cfg(test)]
