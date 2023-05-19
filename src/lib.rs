@@ -2,7 +2,7 @@ use crate::cli::run_cli;
 
 mod cli;
 
-mod happynum;
+pub mod happynum;
 
 #[derive(Default)]
 pub struct App;
