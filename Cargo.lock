@@ -314,7 +314,7 @@ checksum = "eabb4a44450da02c90444cf74558da904edde8fb4e9035a9a6a4e15445af0bd7"
 
 [[package]]
 name = "happynum"
-version = "1.7.1"
+version = "1.7.2"
 dependencies = [
  "clap 4.2.7",
  "criterion",
