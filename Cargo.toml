@@ -28,3 +28,9 @@ criterion = "0.5.1"
 [[bench]]
 name = "my_benchmark"
 harness = false
+
+[profile.release]
+strip = "debuginfo"
+
+[build]
+rustflags = ["-C", "target-cpu=native"]
