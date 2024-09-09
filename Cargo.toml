@@ -31,6 +31,3 @@ harness = false
 
 [profile.release]
 strip = "debuginfo"
-
-[build]
-rustflags = ["-C", "target-cpu=native"]
